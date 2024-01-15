@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+
+  api_nginx:
+    build:
+      context: ./docker
+      dockerfile: development/nginx/Dockerfile
+      args:
+        NGINX_VERSION: 1.24
+    ports:
+      - "8080:80"
+    volumes:
+      - "./:/application"
+
+  php-fpm:
+    build:
+      context: ./docker
+      dockerfile: development/php-fpm/Dockerfile
+      args:
+        PHP_VERSION: 8.3
+        XDEBUG_VERSION: 3.3.1
+    user: "$_UID:$_GID"
+    volumes:
+      - ".:/application"
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  php-cli:
+    build:
+      context: ./docker
+      dockerfile: development/php-cli/Dockerfile
+      args:
+        PHP_VERSION: 8.3
+        XDEBUG_VERSION: 3.3.1
+    user: "$_UID:$_GID"
+    volumes:
+      - ".:/application"
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
