@@ -1,5 +1,6 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+# todo move to modules
+
+health_check_action:
+  path: /health
+  controller: App\Shared\UI\Http\Rest\Controller\HealthController
+  methods: GET
