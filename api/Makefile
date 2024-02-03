@@ -39,3 +39,6 @@ test:
 
 test-coverage:
 	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer run test-coverage
+
+infection:
+	$(DOCKER_COMPOSE) run --rm --no-deps php-cli vendor/bin/infection --threads=4 --only-covered
