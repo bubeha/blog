@@ -7,9 +7,12 @@
          colors="true"
          bootstrap="tests/bootstrap.php"
          executionOrder="depends,defects"
+         requireCoverageMetadata="true"
+         beStrictAboutCoverageMetadata="true"
          beStrictAboutOutputDuringTests="true"
-         beStrictAboutTodoAnnotatedTests="true"
-         cacheResultFile="var/cache/.phpunit.result.cache"
+         failOnRisky="true"
+         failOnWarning="true"
+         cacheDirectory="var/.phpunit.result.cache"
 >
     <php>
         <ini name="display_errors" value="1" />
