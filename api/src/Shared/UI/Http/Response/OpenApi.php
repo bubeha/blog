@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 final class OpenApi extends JsonResponse
 {
-    public static function fromPayload(array|string $payload, int $status): self
+    public static function fromPayload(mixed $payload, int $status): self
     {
         return new self($payload, $status);
     }
