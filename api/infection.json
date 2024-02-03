@@ -3,10 +3,15 @@
     "source": {
         "directories": [
             "src"
+        ],
+        "excludes": [
+            "{Rest/.*}"
         ]
     },
     "logs": {
-        "text": "var/log/infection/infection-log.txt",
+        "text": "var/log/infection/infection.txt",
+        "html": "var/log/infection/infection.html",
+        "summary": "var/log/infection/summary.log"
     },
     "mutators": {
         "@default": true
