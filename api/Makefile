@@ -22,3 +22,20 @@ pull:
 
 update-deps:
 	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer update
+
+psalm:
+	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer run psalm -- --show-info=true
+
+php-cs-fixer:
+	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer run php-cs-fixer
+
+rector:
+	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer run rector
+
+lint-fix: rector php-cs-fixer
+
+test:
+	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer run test
+
+test-coverage:
+	$(DOCKER_COMPOSE) run --rm --no-deps php-cli composer run test-coverage
