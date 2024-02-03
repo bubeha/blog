@@ -17,7 +17,7 @@ final class HandlerBuilder
 
         foreach ($callables as $callable) {
             /** @var null|class-string $result */
-            $result = self::extracted($callable);
+            $result = self::extract($callable);
 
             if ($result) {
                 $callablesHandlers[$result] = [$callable];
@@ -31,18 +31,19 @@ final class HandlerBuilder
      * @param callable&object $callable
      * @throws \ReflectionException
      */
-    private static function extracted(object $callable): ?string
+    private static function extract(object $callable): ?string
     {
         $reflectionClass = new \ReflectionClass($callable);
 
-        $result = $reflectionClass->getMethod('__invoke');
+        $method = $reflectionClass->getMethod('__invoke');
 
-        if (empty($result->getParameters())) {
+        if (empty($method->getParameters())) {
             return null;
         }
 
-        $type = $result->getParameters()[0]->getType();
+        /** @var \ReflectionNamedType|null $fistParameterType */
+        $fistParameterType = $method->getParameters()[0]->getType();
 
-        return $type instanceof \Stringable ? (string) $type : null;
+        return $fistParameterType?->getName();
     }
 }

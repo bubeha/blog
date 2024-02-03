@@ -34,5 +34,9 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">src/Shared/Infrastructure/ByPassFinals</directory>
+            <directory suffix=".php">src/Shared/Infrastructure/Symfony</directory>
+        </exclude>
     </source>
 </phpunit>
