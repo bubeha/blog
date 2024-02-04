@@ -6,7 +6,7 @@ namespace App\UI\Http\Rest\Controller;
 
 use App\UI\Http\Response\OpenApi;
 
-final class HealthController
+final class HealthAction
 {
     public function __invoke(): OpenApi
     {

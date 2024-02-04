@@ -1,6 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\SecurityBundle\SecurityBundle;
+
 return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
+    FrameworkBundle::class => ['all' => true],
+    SecurityBundle::class => ['all' => true],
 ];

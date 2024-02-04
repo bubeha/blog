@@ -1,6 +1,15 @@
-# todo move to modules
+login_action:
+  path: /login
+  controller: App\UI\Http\Rest\Controller\Auth\LoginAction
+  methods: POST
 
 health_check_action:
   path: /health
-  controller: App\UI\Http\Rest\Controller\HealthController
+  controller: App\UI\Http\Rest\Controller\HealthAction
+  methods: GET
+
+
+current_user_action:
+  path: /v1/me
+  controller: App\UI\Http\Rest\Controller\CurrentUserAction
   methods: GET
