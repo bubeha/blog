@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\UI\Http\Rest\Controller;
+namespace App\UI\Http\Rest\Controller;
 
-use App\Shared\UI\Http\Response\OpenApi;
+use App\UI\Http\Response\OpenApi;
 
-// todo move to apps directory
 final class HealthController
 {
     public function __invoke(): OpenApi

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Shared\UI\Http\Response;
 
-use App\Shared\UI\Http\Response\OpenApi;
+use App\UI\Http\Response\OpenApi;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;

@@ -23,8 +23,8 @@ services:
     exclude:
       - '../src/Shared/Infrastructure/Symfony/Kernel.php'
 
-  App\Shared\UI\Http\Rest\Controller\:
-    resource: '../src/Shared/UI/Http/Rest/Controller/'
+  App\UI\Http\Rest\Controller\:
+    resource: '../src/UI/Http/Rest/Controller/'
     tags: [ 'controller.service_arguments' ]
 
   App\Shared\Infrastructure\Bus\Command\MessengerCommandBus:
