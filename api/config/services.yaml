@@ -11,10 +11,14 @@ services:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
+<<<<<<< Updated upstream
   _instanceof:
     App\Shared\Application\Bus\Command\CommandHandler:
       tags:
         - { name: 'app.command_handler' }
+    App\Shared\Application\Bus\Query\QueryHandler:
+      tags:
+        - { name: 'app.query_handler' }
 
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
@@ -30,3 +34,36 @@ services:
   App\Shared\Infrastructure\Bus\Command\MessengerCommandBus:
     arguments:
       - !tagged_iterator 'app.command_handler'
+
+  App\Shared\Infrastructure\Bus\Query\MessengerQueryBus:
+    arguments:
+      - !tagged_iterator 'app.query_handler'
+
+  App\User\Infrastructure\Auth\AuthorizationHeaderTokenExtractor:
+    arguments:
+      - 'Bearer'
+      - 'Authorization'
+
+  App\UI\Http\Rest\EventSubscriber\AddJsonBodyToRequestListener:
+    tags:
+      - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest', priority: 100 }
+=======
+  App\:
+    resource: '../src/*'
+    exclude: '../src/**/{Migrations,EventSubscriber}'
+    tags: ['controller.service_arguments']
+
+  App\Command\:
+    resource: '../src/Command'
+    tags: ['.command']
+
+  _instanceof:
+    App\Shared\Domain\Bus\Command\CommandHandler:
+      tags: [ 'bus.command_handler' ]
+
+  App\Shared\Infrastructure\Bus\Command\InMemoryMessengerCommandBus:
+    arguments: [ !tagged bus.command_handler ]
+
+  # add more service definitions when explicit configuration is needed
+  # please note that last definitions always *replace* previous ones
+>>>>>>> Stashed changes
