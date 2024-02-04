@@ -2,5 +2,5 @@
 
 health_check_action:
   path: /health
-  controller: App\Shared\UI\Http\Rest\Controller\HealthController
+  controller: App\UI\Http\Rest\Controller\HealthController
   methods: GET
