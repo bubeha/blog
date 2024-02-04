@@ -6,6 +6,7 @@ namespace App\Shared\UI\Http\Rest\Controller;
 
 use App\Shared\UI\Http\Response\OpenApi;
 
+// todo move to apps directory
 final class HealthController
 {
     public function __invoke(): OpenApi
